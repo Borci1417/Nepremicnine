@@ -32,7 +32,7 @@ jobs:
           tags: borci1417/nepremicnine:latest
 
       - name: Publish
-        run: dotnet publish --configuration Release --no-build --output "${{ github.workspace}}/publish"
+        run: dotnet publish RZ_nepremicnine/RZ_nepremicnine.csproj --configuration Release --output "${{ github.workspace }}/publish"
 
       - name: Deploy to Azure Web app
         uses: azure/webapps-deploy@v2
