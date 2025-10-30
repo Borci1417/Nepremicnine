@@ -31,6 +31,14 @@ jobs:
           push: true
           tags: borci1417/nepremicnine:latest
 
+      - name: List repository files
+        run: |
+          echo "Current directory:"
+          pwd
+          echo "Contents:"
+          ls -R
+
+
       - name: Publish
         run: dotnet publish Nepremicnine.csproj --configuration Release --output "${{ github.workspace }}/publish"
 
