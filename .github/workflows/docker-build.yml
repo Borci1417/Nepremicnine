@@ -31,16 +31,8 @@ jobs:
           push: true
           tags: borci1417/nepremicnine:latest
 
-      - name: List repository files
-        run: |
-          echo "Current directory:"
-          pwd
-          echo "Contents:"
-          ls -R
-
-
       - name: Publish
-        run: dotnet publish Nepremicnine.csproj --configuration Release --output "${{ github.workspace }}/publish"
+        run: dotnet publish RZ_nepremicnine.csproj --configuration Release --output "${{ github.workspace }}/publish"
 
       - name: Deploy to Azure Web app
         uses: azure/webapps-deploy@v2
