@@ -41,6 +41,17 @@ jobs:
           path: RZ_Nepremicine.test/TestResults/*.trx
           reporter: 'dotnet-trx'
 
+      - name: Run unit tests
+        working-directory: Nepremicnine
+        run: dotnet test RZ_Nepremicine.test/RZ_Nepremicine.test.csproj --no-build --logger "trx;LogFileName=test_results.trx" --results-directory "RZ_Nepremicine.test/TestResults"
+
+      - name: Upload test results
+        uses: dorny/test-reporter@v1
+        with:
+          name: 'Test results'
+          path: Nepremicnine/RZ_Nepremicine.test/TestResults/*.trx
+          reporter: 'dotnet-trx'
+
       - name: Publish
         run: dotnet publish RZ_nepremicnine.csproj --configuration Release --output "${{ github.workspace }}/publish"
 
