@@ -43,14 +43,12 @@ jobs:
           tags: borci1417/nepremicnine:latest
 
       - name: Run unit tests
-        if: github.event_name == 'pull_request'
         run: dotnet test Nepremicnine/RZ_Nepremicnine.test/RZ_Nepremicnine.test.csproj --logger "trx;LogFileName=test_results.trx" --results-directory "Nepremicnine/RZ_Nepremicnine.test/TestResults"
 
       - name: List TestResults
         run: ls -R RZ_Nepremicine.test/TestResults || true
 
       - name: Upload test results
-        if: github.event_name == 'pull_request'
         uses: dorny/test-reporter@v1
         with:
           name: 'Test results'
