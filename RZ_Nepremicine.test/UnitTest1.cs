@@ -7,7 +7,8 @@ namespace RZ_Nepremicine.test
 	{
 		[TestMethod]
 		public void TestMethod1()
-		{
-		}
+        {
+            Assert.IsTrue(true);
+        }
 	}
 }
