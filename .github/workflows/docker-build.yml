@@ -46,6 +46,10 @@ jobs:
           path: Nepremicnine/RZ_Nepremicine.test/TestResults/*.trx
           reporter: 'dotnet-trx'
 
+      - name: List TestResults
+        run: ls -R RZ_Nepremicine.test/TestResults || true
+
+
       - name: Publish
         run: dotnet publish RZ_nepremicnine.csproj --configuration Release --output "${{ github.workspace }}/publish"
 
