@@ -32,13 +32,13 @@ jobs:
           tags: borci1417/nepremicnine:latest
 
       - name: Test
-        run: dotnet test --no-restore --logger:trx
-        
+        run: dotnet test RZ_Nepremicine.test/RZ_Nepremicine.test.csproj --logger "trx;LogFileName=test_results.trx"
+
       - name: Save test results as artifact
         uses: dorny/test-reporter@v1
         with:
           name: 'Test results'
-          path: ${{ github.workspace }}/Test_Prijava/TestResults/*.trx
+          path: RZ_Nepremicine.test/TestResults/*.trx
           reporter: 'dotnet-trx'
 
       - name: Publish
