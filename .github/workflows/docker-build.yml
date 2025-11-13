@@ -50,14 +50,6 @@ jobs:
           reporter: 'dotnet-trx'
           fail-on-error: false
 
-      - name: Clean project
-        run: dotnet clean RZ_nepremicnine.csproj
-
-      - name: Remove old artifacts
-        run: |
-          rm -rf obj
-          rm -rf bin
-
       - name: Publish
         run: dotnet publish RZ_nepremicnine.csproj --configuration Release --output "${{ github.workspace }}/publish"
 
