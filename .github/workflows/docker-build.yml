@@ -31,6 +31,16 @@ jobs:
           push: true
           tags: borci1417/nepremicnine:latest
 
+      - name: Test
+        run: dotnet test --no-restore --logger:trx
+        
+      - name: Save test results as artifact
+        uses: dorny/test-reporter@v1
+        with:
+          name: 'Test results'
+          path: ${{ github.workspace }}/Test_Prijava/TestResults/*.trx
+          reporter: 'dotnet-trx'
+
       - name: Publish
         run: dotnet publish RZ_nepremicnine.csproj --configuration Release --output "${{ github.workspace }}/publish"
 
