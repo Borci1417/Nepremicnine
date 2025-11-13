@@ -37,7 +37,6 @@ jobs:
           tags: borci1417/nepremicnine:latest
 
       - name: Run unit tests
-        working-directory: Nepremicnine
         run: dotnet test RZ_Nepremicine.test/RZ_Nepremicine.test.csproj --logger "trx;LogFileName=test_results.trx" --results-directory "RZ_Nepremicine.test/TestResults"
 
       - name: Upload test results
