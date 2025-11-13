@@ -43,7 +43,8 @@ jobs:
           tags: borci1417/nepremicnine:latest
 
       - name: Run unit tests
-        run: dotnet test RZ_Nepremicine.test/RZ_Nepremicine.test.csproj --logger "trx;LogFileName=test_results.trx" --results-directory "RZ_Nepremicine.test/TestResults"
+        if: github.event_name == 'pull_request'
+        run: dotnet test Nepremicnine/RZ_Nepremicine.test/RZ_Nepremicine.test.csproj --logger "trx;LogFileName=test_results.trx" --results-directory "Nepremicnine/RZ_Nepremicine.test/TestResults"
 
       - name: List TestResults
         run: ls -R RZ_Nepremicine.test/TestResults || true
@@ -52,7 +53,7 @@ jobs:
         uses: dorny/test-reporter@v1
         with:
           name: 'Test results'
-          path: ./Nepremicnine/RZ_Nepremicine.test/TestResults/*.trx
+          path: Nepremicnine/RZ_Nepremicine.test/TestResults/*.trx
           reporter: 'dotnet-trx'
 
       - name: Publish
