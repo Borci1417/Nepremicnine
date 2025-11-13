@@ -6,6 +6,11 @@ on:
       - main
       - master
       - test
+
+permissions:
+  checks: write
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
