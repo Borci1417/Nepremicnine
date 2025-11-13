@@ -37,24 +37,13 @@ jobs:
           tags: borci1417/nepremicnine:latest
 
       - name: Test
-        run: dotnet test RZ_Nepremicine.test/RZ_Nepremicine.test.csproj --logger "trx;LogFileName=test_results.trx"
-
+        run: dotnet test --no-restore --logger:trx
+        
       - name: Save test results as artifact
         uses: dorny/test-reporter@v1
         with:
           name: 'Test results'
-          path: RZ_Nepremicine.test/TestResults/*.trx
-          reporter: 'dotnet-trx'
-
-      - name: Run unit tests
-        working-directory: Nepremicnine
-        run: dotnet test RZ_Nepremicine.test/RZ_Nepremicine.test.csproj --no-build --logger "trx;LogFileName=test_results.trx" --results-directory "RZ_Nepremicine.test/TestResults"
-
-      - name: Upload test results
-        uses: dorny/test-reporter@v1
-        with:
-          name: 'Test results'
-          path: Nepremicnine/RZ_Nepremicine.test/TestResults/*.trx
+          path: ${{ github.workspace }}/Test_Prijava/TestResults/*.trx
           reporter: 'dotnet-trx'
 
       - name: Publish
