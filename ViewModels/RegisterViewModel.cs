@@ -6,27 +6,25 @@ namespace RZ_nepremicnine.ViewModels
 {
     public class RegisterViewModel
     {
-        [Required(ErrorMessage = "Username is required.")]
-        public string UserName { get; set; }
-        
         [Required(ErrorMessage = "Email is required.")]
         [EmailAddress]
+        [Display(Name = "Email")]
         public string Email { get; set; }
 
+        [Required(ErrorMessage = "Full name is required.")]
+        [Display(Name = "Full Name")]
+        public string FullName { get; set; }
+
         [Required(ErrorMessage = "Password is required.")]
-        [StringLength(40, MinimumLength = 8, ErrorMessage = "Password needs a minimum of 8 charachers")]
+        [StringLength(40, MinimumLength = 8, ErrorMessage = "Password needs a minimum of 8 characters")]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
-        [Compare("ConfirmPassword", ErrorMessage = "Password doesn't match.")]
         public string Password { get; set; }
 
-        [Required(ErrorMessage = "Password is required.")]
-        [StringLength(40, MinimumLength = 8, ErrorMessage = "Password needs a minimum of 8 charachers")]
+        [Required(ErrorMessage = "Confirm password is required.")]
         [DataType(DataType.Password)]
         [Display(Name = "Confirm Password")]
-
+        [Compare("Password", ErrorMessage = "Passwords don't match.")]
         public string ConfirmPassword { get; set; }
-
-
     }
 }
